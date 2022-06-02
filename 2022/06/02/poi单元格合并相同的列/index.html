@@ -10,8 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="import org.apache.poi.ss.usermodel.Sheet;import org.apache.poi.ss.util.CellRangeAddress;
-public cla,"> 
+    <meta name="description" content="java poi excel合并单元格 相同的列以及在有父级约束条件下合并二级列
+1234567891011121314151617181920212223242526272829303132333,"> 
     <meta name="author" content="YQQ"> 
     <link rel="alternative" href="atom.xml" title="YQQ" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -20,8 +20,8 @@ public cla,">
     
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:title" content="poi单元格合并相同的列 - YQQ"/>
-    <meta name="twitter:description" content="import org.apache.poi.ss.usermodel.Sheet;import org.apache.poi.ss.util.CellRangeAddress;
-public cla,"/>
+    <meta name="twitter:description" content="java poi excel合并单元格 相同的列以及在有父级约束条件下合并二级列
+1234567891011121314151617181920212223242526272829303132333,"/>
     
     
     
@@ -29,8 +29,8 @@ public cla,"/>
     <meta property="og:site_name" content="YQQ"/>
     <meta property="og:type" content="object"/>
     <meta property="og:title" content="poi单元格合并相同的列 - YQQ"/>
-    <meta property="og:description" content="import org.apache.poi.ss.usermodel.Sheet;import org.apache.poi.ss.util.CellRangeAddress;
-public cla,"/>
+    <meta property="og:description" content="java poi excel合并单元格 相同的列以及在有父级约束条件下合并二级列
+1234567891011121314151617181920212223242526272829303132333,"/>
     
 <link rel="stylesheet" href="/css/diaspora.css">
 
@@ -66,47 +66,8 @@ public cla,"/>
 
         </div>
         <div class="content markdown">
-            <p>import org.apache.poi.ss.usermodel.Sheet;<br>import org.apache.poi.ss.util.CellRangeAddress;</p>
-<p>public class ExcelHelper {<br>    &#x2F;**合并单元格，合并相同的列<br>     *<br>     * @param sheet<br>     * @param startRow 开始行<br>     * @param mergeRow 需要合并的列<br>     * @param i 用于计数 ，和startRow值相同<br>     *&#x2F;<br>    public void merge(Sheet sheet, int startRow, int mergeRow, int i){<br>        String startText &#x3D; sheet.getRow(startRow).getCell(mergeRow).toString();<br>        while(sheet.getRow(i)!&#x3D;null&amp;&amp;sheet.getRow(i).getCell(mergeRow)!&#x3D;null){<br>            if(sheet.getRow(i).getCell(mergeRow)!&#x3D;null<br>                &amp;&amp;!sheet.getRow(i).getCell(mergeRow).toString().equals(startText)){<br>                &#x2F;&#x2F;合并单元格<br>                sheet.addMergedRegion(new CellRangeAddress(startRow,i-1,mergeRow,mergeRow));<br>                startText &#x3D; sheet.getRow(i).getCell(mergeRow).getStringCellValue();<br>                startRow &#x3D; i;<br>            }<br>            i++;<br>        }</p>
-<pre><code>    //尾部处理
-    if(startRow!=i)&#123;
-        sheet.addMergedRegion(new CellRangeAddress(startRow,i-1,mergeRow,mergeRow));
-    &#125;
-&#125;
-
-/**合并单元格，存在父级对二级列合并的情况
- *
- * @param sheet
- * @param startRow 开始行
- * @param mergeRow 需要合并的列
- * @param mergeParentRow 需要合并的列的父级
- * @param i 用于计数 ，和startRow值相同
- */
-public void mergeByParent(Sheet sheet, int startRow, int mergeRow,int mergeParentRow,int i)&#123;
-    String startText = sheet.getRow(startRow).getCell(mergeRow).toString();
-    String startParentText = sheet.getRow(startRow).getCell(mergeParentRow).toString();
-    while(sheet.getRow(i)!=null&amp;&amp;sheet.getRow(i).getCell(mergeRow)!=null)&#123;
-        if(sheet.getRow(i).getCell(mergeRow)==null
-                ||!sheet.getRow(i).getCell(mergeRow).toString().equals(startText)
-                ||!sheet.getRow(i).getCell(mergeParentRow).toString().equals(startParentText))&#123;
-            if(i!=startRow)&#123;
-                //合并单元格
-                sheet.addMergedRegion(new CellRangeAddress(startRow,i-1,mergeRow,mergeRow));
-            &#125;
-            startText = sheet.getRow(i).getCell(mergeRow).getStringCellValue();
-            startParentText = sheet.getRow(i).getCell(mergeParentRow).getStringCellValue();
-            startRow = i;
-        &#125;
-        i++;
-    &#125;
-
-    //尾部处理
-    if(startRow!=i)&#123;
-        sheet.addMergedRegion(new CellRangeAddress(startRow,i-1,mergeRow,mergeRow));
-    &#125;
-&#125;
-</code></pre>
-<p>}</p>
+            <p>java poi excel合并单元格 相同的列以及在有父级约束条件下合并二级列</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.poi.ss.usermodel.Sheet;</span><br><span class="line"><span class="keyword">import</span> org.apache.poi.ss.util.CellRangeAddress;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExcelHelper</span> &#123;</span><br><span class="line">    <span class="comment">/**合并单元格，合并相同的列</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sheet</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> startRow 开始行</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mergeRow 需要合并的列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> i 用于计数 ，和startRow值相同</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(Sheet sheet, <span class="type">int</span> startRow, <span class="type">int</span> mergeRow, <span class="type">int</span> i)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">startText</span> <span class="operator">=</span> sheet.getRow(startRow).getCell(mergeRow).toString();</span><br><span class="line">        <span class="keyword">while</span>(sheet.getRow(i)!=<span class="literal">null</span>&amp;&amp;sheet.getRow(i).getCell(mergeRow)!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sheet.getRow(i).getCell(mergeRow)!=<span class="literal">null</span></span><br><span class="line">                &amp;&amp;!sheet.getRow(i).getCell(mergeRow).toString().equals(startText))&#123;</span><br><span class="line">                <span class="comment">//合并单元格</span></span><br><span class="line">                sheet.addMergedRegion(<span class="keyword">new</span> <span class="title class_">CellRangeAddress</span>(startRow,i-<span class="number">1</span>,mergeRow,mergeRow));</span><br><span class="line">                startText = sheet.getRow(i).getCell(mergeRow).getStringCellValue();</span><br><span class="line">                startRow = i;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//尾部处理</span></span><br><span class="line">        <span class="keyword">if</span>(startRow!=i)&#123;</span><br><span class="line">            sheet.addMergedRegion(<span class="keyword">new</span> <span class="title class_">CellRangeAddress</span>(startRow,i-<span class="number">1</span>,mergeRow,mergeRow));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**合并单元格，存在父级对二级列合并的情况</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sheet</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> startRow 开始行</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mergeRow 需要合并的列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mergeParentRow 需要合并的列的父级</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> i 用于计数 ，和startRow值相同</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">mergeByParent</span><span class="params">(Sheet sheet, <span class="type">int</span> startRow, <span class="type">int</span> mergeRow,<span class="type">int</span> mergeParentRow,<span class="type">int</span> i)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">startText</span> <span class="operator">=</span> sheet.getRow(startRow).getCell(mergeRow).toString();</span><br><span class="line">        <span class="type">String</span> <span class="variable">startParentText</span> <span class="operator">=</span> sheet.getRow(startRow).getCell(mergeParentRow).toString();</span><br><span class="line">        <span class="keyword">while</span>(sheet.getRow(i)!=<span class="literal">null</span>&amp;&amp;sheet.getRow(i).getCell(mergeRow)!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sheet.getRow(i).getCell(mergeRow)==<span class="literal">null</span></span><br><span class="line">                    ||!sheet.getRow(i).getCell(mergeRow).toString().equals(startText)</span><br><span class="line">                    ||!sheet.getRow(i).getCell(mergeParentRow).toString().equals(startParentText))&#123;</span><br><span class="line">                <span class="keyword">if</span>(i!=startRow)&#123;</span><br><span class="line">                    <span class="comment">//合并单元格</span></span><br><span class="line">                    sheet.addMergedRegion(<span class="keyword">new</span> <span class="title class_">CellRangeAddress</span>(startRow,i-<span class="number">1</span>,mergeRow,mergeRow));</span><br><span class="line">                &#125;</span><br><span class="line">                startText = sheet.getRow(i).getCell(mergeRow).getStringCellValue();</span><br><span class="line">                startParentText = sheet.getRow(i).getCell(mergeParentRow).getStringCellValue();</span><br><span class="line">                startRow = i;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//尾部处理</span></span><br><span class="line">        <span class="keyword">if</span>(startRow!=i)&#123;</span><br><span class="line">            sheet.addMergedRegion(<span class="keyword">new</span> <span class="title class_">CellRangeAddress</span>(startRow,i-<span class="number">1</span>,mergeRow,mergeRow));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
