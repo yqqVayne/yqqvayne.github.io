@@ -68,4 +68,18 @@
         <category>JAVA</category>
       </categories>
   </entry>
+  <entry>
+    <title>SQL处理问题集合</title>
+    <url>/2022/06/02/SQL%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<h4 id="1、sql多条记录获取最新的一条-其中depnum为部门编号，create为记录创建时间"><a href="#1、sql多条记录获取最新的一条-其中depnum为部门编号，create为记录创建时间" class="headerlink" title="1、sql多条记录获取最新的一条,  其中depnum为部门编号，create为记录创建时间"></a>1、sql多条记录获取最新的一条,  其中depnum为部门编号，create为记录创建时间</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">select c.* form A c inner <span class="title function_">join</span> <span class="params">(</span></span><br><span class="line"><span class="params">    select depnum,max(createdate)</span> as createdate from A group by depnum) d on A.depnum = d.depnum and c.createdate = d.createdate</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、分类统计金额"><a href="#2、分类统计金额" class="headerlink" title="2、分类统计金额"></a>2、分类统计金额</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">sum(</span><br><span class="line">    (<span class="keyword">case</span> <span class="title function_">when</span><span class="params">(<span class="number">1</span>=<span class="number">1</span> 这里是条件)</span></span><br><span class="line">    then (</span><br><span class="line">        amount</span><br><span class="line">    ) <span class="keyword">else</span> <span class="number">0</span> end)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、oracle取整"><a href="#3、oracle取整" class="headerlink" title="3、oracle取整"></a>3、oracle取整</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">round(num,<span class="number">0</span>)  四舍五入</span><br><span class="line">trunc(num,<span class="number">0</span>)  直接截取</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+  </entry>
 </search>
