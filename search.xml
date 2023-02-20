@@ -94,4 +94,44 @@
         <category>随笔</category>
       </categories>
   </entry>
+  <entry>
+    <title>websphere服务搭建</title>
+    <url>/2023/02/20/websphere%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>1、把文件夹打包称war包命令<br>jar -cvf test.war *</p>
+<p>2、进入websphere控制台<br>https:&#x2F;&#x2F;<em>.</em>.<em>.</em>:9043&#x2F;ibm&#x2F;console&#x2F;logon.jsp</p>
+<p>3、输入用户名，密码，点击登陆</p>
+<p>4、在环境——&gt;共享库下，选择作用域“节点&#x3D;localhostNode01，服务器&#x3D;server1”，点击“新建”按钮</p>
+<p>5、填写名称：mylib<br>类路径：<br>&#x2F;opt&#x2F;IBM&#x2F;WebSphere&#x2F;AppServer&#x2F;profiles&#x2F;AppSrv01&#x2F;installedApps&#x2F;ybtapp1Node01Cell&#x2F;nbybt_war.ear&#x2F;nbybt.war&#x2F;WEB-INF&#x2F;lib&#x2F;poi-3.10-FINAL-20140208.jar</p>
+<p>6、点击确定后保存</p>
+<p>7、点击左侧菜单栏：服务器——&gt;服务器类型——&gt;websphere application server,选择server1</p>
+<p>8、选择 服务器基础结构——&gt;JAVA进程与管理——&gt;类装入器</p>
+<p>9、点击新建</p>
+<p>10、点击确认按钮，并保存配置</p>
+<p>11、进入，点击“Classloader_140618******”</p>
+<p>12、选择共享库yin yong4</p>
+<p>13、点击添加按钮</p>
+<p>14、选择mylib，点击确认，然后保存</p>
+<p>15、点击左菜单栏：应用程序——&gt;应用程序类型——&gt;WebSphere企业应用程序</p>
+<p>16、点击“安装”按钮，选择本地war包，点击“下一步”</p>
+<p>17、点击下一步</p>
+<p>18、点击下一步</p>
+<p>19、点击下一步</p>
+<p>20、点击下一步</p>
+<p>21、在上下文根下面鞋“&#x2F;ybt”，点击下一步</p>
+<p>22、点击下一步</p>
+<p>23、点击“保存”选项</p>
+<p>24、启动应用</p>
+<p>26、修改系统字符信息<br> cd &#x2F;etc&#x2F;sysconfig<br> vi i18n<br> 将内容修改为： LANG&#x3D;”zh_CN.GB18030”</p>
+<p> 27、增加命令别名<br> unset i<br> unset pathmunge</p>
+<p> alias cdlog&#x3D;’cd &#x2F;home&#x2F;***’</p>
+<p> 28、sftp配置方式<br> 确认应用服务器是否安装sftp（ssh）：执行 rpm -q openssh<br> 在服务器上生成密钥对：<br> &#x2F;home&#x2F;was&#x2F;.ssh路径（用什么用户安装sftp，.ssh目录就在这个用户的主目录下）下执行：<br> ssh-keygen -b 2048 -t rsa -f id_rsa<br> 出险的提示框直接回车，生成id_rsa（私钥）、id_rsa.pub（公钥），复制公钥内容已备使用</p>
+<p> 登陆前置机的&#x2F;root&#x2F;.ssh 路径下创建authorized_keys 文件（如果是非root用户，则需要用root用户在该用户的主目录下建立.ssh目录和authorized_keys文件），<br> vi authorized_keys，将客户端生成的公钥赋值过去</p>
+<p> 修改完后，应用服务器执行 sftp root@<em>.</em>.<em>.</em> 验证sftp连通性</p>
+<p> 第一次登陆输入yes，以后就不用，会直接登陆到服务器</p>
+<p> 注意：  home目录和.ssh目录权限必须为755或700<br>        id_rsa.pub权限必须为644<br>        id_rsa权限必须为600<br>        authorized_keys权限为vi自动生成权限 ，644或640</p>
+<p>29、应用服务器启停<br>manager启停<br>cd &#x2F;was&#x2F;Dmgr01&#x2F;bin<br>.&#x2F;stopManager.sh<br>.&#x2F;startManager.sh</p>
+<p>node启停<br>cd &#x2F;was&#x2F;AppSrv01&#x2F;bin<br>.&#x2F;stopNode.sh<br>.&#x2F;startNode.sh</p>
+<p>server启停<br>cd &#x2F;was&#x2F;AppSrv01&#x2F;bin<br>.&#x2F;stopServer.sh server1<br>.&#x2F;startServer.sh server1</p>
+]]></content>
+  </entry>
 </search>
