@@ -110,4 +110,25 @@
 <p>server启停<br>cd &#x2F;was&#x2F;AppSrv01&#x2F;bin<br>.&#x2F;stopServer.sh server1<br>.&#x2F;startServer.sh server1</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>tongweb控制台部署的一些问题及具体步骤</title>
+    <url>/2023/03/23/tongweb%E6%8E%A7%E5%88%B6%E5%8F%B0%E9%83%A8%E7%BD%B2%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4/</url>
+    <content><![CDATA[<ol>
+<li>将项目jdk版本选择成1.8</li>
+<li>idea中，Artifacts选择“Web Application：Archive”，如果选择empty，需要右键项目文件夹，点击“Put into Output Root”</li>
+<li>添加好Artifacts，“Build Artifacts”，Build成功后会爱classes目录下生成对应的war包</li>
+<li>打开tongweb管理后台，http:&#x2F;&#x2F;<em>.</em>.<em>.</em>:9060&#x2F;console&#x2F;</li>
+<li>输入用户名和密码，登陆成功后</li>
+<li>点击“应用管理”——&gt;“部署应用”，选择本机，选择刚才打包好的war包</li>
+<li>点击开始部署，jsp预编译可选可不选，下一步、下一步、完成。</li>
+<li>部署成功后，点击应用后面的http地址，可以访问项目</li>
+</ol>
+<p>期间遇到的问题：</p>
+<ol>
+<li>好多次部署失败，检查jar包是否存在中文名，是否与1.8版本兼容（你本地需要可以跑起来），这是部署过程中遇到的最大的问题</li>
+<li>关于sftp配置，由于管理台部署的项目所有者是tongweb，所以ssh配置的时候也需要用tongweb用户去配置</li>
+</ol>
+<p>目前项目升级顺利，出现其他问题再更新。</p>
+]]></content>
+  </entry>
 </search>
